@@ -1,4 +1,4 @@
-package com.bryanreinero.merkle;
+package com.bryanreinero.markov;
 
 public class Edge<T extends Visitor<T>> implements Comparable <Edge<T>> {
 	

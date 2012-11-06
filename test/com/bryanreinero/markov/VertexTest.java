@@ -1,4 +1,4 @@
-package com.bryanreinero.merkle;
+package com.bryanreinero.markov;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;

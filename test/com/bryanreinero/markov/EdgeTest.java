@@ -1,10 +1,10 @@
-package com.bryanreinero.merkle;
+package com.bryanreinero.markov;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 import org.testng.annotations.Test;
 
-import com.bryanreinero.merkle.VertexTest.TestVisitor;
+import com.bryanreinero.markov.VertexTest.TestVisitor;
 
 public class EdgeTest {
 	

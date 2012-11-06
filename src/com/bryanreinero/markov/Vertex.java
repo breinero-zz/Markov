@@ -1,4 +1,4 @@
-package com.bryanreinero.merkle;
+package com.bryanreinero.markov;
 
 import java.util.Collections;
 import java.util.List;

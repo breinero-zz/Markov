@@ -1,0 +1,10 @@
+.idea/
+
+ User-specific stuff:
+.idea/workspace.xml
+.idea/vcs.xml
+
+.idea/uiDesigner.xml
+
+**build
+**.iml

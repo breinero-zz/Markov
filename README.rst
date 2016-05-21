@@ -9,7 +9,7 @@ Markov
 Dependencies
 ============
 
-Markov is supported and tested on Java 1.6
+Markov is supported and tested on Java 1.8
 
 Additional dependencies are:
 - (Unit Tests) TestNG 6.8  `http://testng.org/doc/index.html`

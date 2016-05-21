@@ -1,11 +1,11 @@
 package com.bryanreinero.markov;
 
-public class Event <T> implements Comparable<Event> {
+public class Edge<T> implements Comparable<Edge> {
 
 	private final T outcome;
 	private float probability;
 
-	public Event( float p, T o ) {
+	public Edge(float p, T o ) {
 		if (p < 0 || p > 1)
 			throw new IllegalArgumentException(
 					"Probability must be a value > 0 and < 1");
@@ -29,7 +29,7 @@ public class Event <T> implements Comparable<Event> {
 	}
 
 	@Override
-	public int compareTo(Event rival) {
+	public int compareTo(Edge rival) {
 
 		if (rival.getProbability() > this.probability)
 			return -1;
@@ -42,8 +42,8 @@ public class Event <T> implements Comparable<Event> {
 
 	@Override
 	public boolean equals(Object o) {
-        return ( o instanceof Event &&
-               outcome.equals( ((Event)o).getOutcome() )
+        return ( o instanceof Edge &&
+               outcome.equals( ((Edge)o).getOutcome() )
         );
 	}
 

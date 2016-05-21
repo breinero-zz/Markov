@@ -5,25 +5,25 @@ import java.util.Random;
 import java.util.Set;
 
 
-public class Chain<T> {
+public class Node<T> {
 
     private static final Random rand = new Random();
-	private Set<Event<T>> events = new HashSet<Event<T>>();
+	private Set<Edge<T>> edges = new HashSet<Edge<T>>();
 	
-	public void setProbabilities( Set<Event<T>> candidates ) {
+	public void setProbabilities( Set<Edge<T>> candidates ) {
 
 		float totalDesiredProbability = 0;
 
 
-        Set<Event<T>> newEvents = new HashSet<>();
+        Set<Edge<T>> newEvents = new HashSet<Edge<T>>();
 		
-		for ( Event e : candidates ) {
+		for ( Edge e : candidates ) {
 			totalDesiredProbability += e.getProbability();
             if( e.getProbability() > 0 )
                 newEvents.add( e );
         }
 		
-		for ( Event e : events )
+		for ( Edge e : edges )
 			if( candidates.contains( e ) )
                  continue;
             else {
@@ -33,14 +33,14 @@ public class Chain<T> {
             }
 
         float newTotalProb = 0;
-        for ( Event e : newEvents )
+        for ( Edge e : newEvents )
             newTotalProb += e.getProbability();
 
         if (  newTotalProb < 1 && newTotalProb > 0 )
-            for( Event e : newEvents )
+            for( Edge e : newEvents )
                 e.setProbability( e.getProbability() / newTotalProb  );
 
-        events = newEvents;
+        edges = newEvents;
 	}
 
 	@Override
@@ -49,14 +49,14 @@ public class Chain<T> {
 		StringBuffer buf = new StringBuffer("{\nevents: [\n");
 		
 		boolean first = true;
-		for ( Event event : events )  {
+		for ( Edge edge : edges )  {
 			if( first )
 				first = false;
 			else
 				buf.append(",\n");
 			
-			cumulativeProbability+= event.getProbability();
-			buf.append( event );
+			cumulativeProbability+= edge.getProbability();
+			buf.append( edge );
 		}
 		buf.append("\n],\n");
 		buf.append("total: "+cumulativeProbability+"\n}");
@@ -67,7 +67,7 @@ public class Chain<T> {
 	public T run() {
 		float cumulativeProbability = 0;
 
-		for( Event<T> e : events ) {
+		for( Edge<T> e : edges ) {
 			cumulativeProbability += e.getProbability();
 			if( rand.nextFloat() <=  cumulativeProbability  )
 				return e.getOutcome();
